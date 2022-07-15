@@ -11,3 +11,20 @@
     <label for=""> Hero Name: </label>
     <input type="text" [(ngModel)]="hero.name">
 </div>
+
+
+<!-- display a list  -->
+<h2> Hero List</h2>
+<ul class="heroes">
+    <li>
+        <span class="badge"> {{ hero.id }}</span> {{ hero.name }}
+    </li>
+</ul>
+
+<!-- display a list of multiple items  -->
+<h2>Heroes List</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+        <span class="badge"> {{ hero.id }}</span> {{ hero.name }}
+    </li>
+</ul>
