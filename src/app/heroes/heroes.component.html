@@ -1,5 +1,13 @@
 
 <!-- the pipe | is a way of formatting code -->
 <h1>{{ hero.name | uppercase }} Details</h1>
+
 <div><span>id: </span>{{ hero.id}}</div>
 <div><span>name: </span>{{ hero.name}}</div>
+
+<!-- two way data binding  -->
+<!-- important for forms when submitting via post requests -->
+<div>
+    <label for=""> Hero Name: </label>
+    <input type="text" [(ngModel)]="hero.name">
+</div>
