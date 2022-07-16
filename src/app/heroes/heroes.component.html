@@ -33,16 +33,17 @@
         <span class="name">{{ hero.name }}</span> 
     </li>
 
-    
+    <!-- working -->
+
     <li *ngFor="let hero of heroes">
         <!-- css binding where hero is alias, selectedHero is the currently selected list item retrieved as a click event-->
         <button [class.selected]="hero === selectedHero" type="button" (click)="onSelected(hero)">
           <span class="badge">{{hero.id}}</span>
           <span class="name">{{hero.name}}</span>
         </button>
-      </li>
+    </li> 
+
 </ul>
 
-
-<!-- importing hero details component and passing in data-->
+<!-- importing hero details component with tags and passing in data-->
 <app-hero-detail [hero]="selectedHero"></app-hero-detail>

@@ -8,7 +8,7 @@ import { Hero } from '../hero';
 })
 export class HeroDetailComponent implements OnInit {
 
-  //to ingest data from another component
+  //to ingest data from another component need to define in typescript file be declaring an input property
   @Input() hero? : Hero;
 
 

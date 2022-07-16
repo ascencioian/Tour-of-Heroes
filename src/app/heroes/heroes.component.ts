@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
 
+//services
+import { HeroService } from '../hero.service';
+
 
 @Component({
   selector: 'app-heroes',
@@ -10,8 +13,8 @@ import { HEROES } from '../mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-  // more than just a name 
-  // hero = 'Ian';
+  //heroes variable is set to an empty array of hero type
+  heroes: Hero[] = [];
 
   //initiates selectedHero with no value
   selectedHero?: Hero;
@@ -22,8 +25,8 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  //imported list of heroes
-  heroes = HEROES;
+  //imported list of heroes (not as a service)
+  // heroes = HEROES;
 
   //single hero object
   hero: Hero = {
@@ -31,11 +34,20 @@ export class HeroesComponent implements OnInit {
     name: 'Ian'
   }
 
-  constructor() { }
+  //here you can inject services into a components constructor
+  //the variable is lowercase of service
+  constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
     //place where you put code that runs on initialization
 
+    //calls
+    this.getHeroes()
+  }
+
+  //method htat sets heroes on line 17 to whatever getHeroes returns
+  getHeroes(): void{
+    this.heroes = this.heroService.getHeroes();
   }
 
 }
