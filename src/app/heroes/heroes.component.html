@@ -22,20 +22,27 @@
 </ul>
 
 <!-- display a list of multiple items with click event for each item -->
+<!-- applies styling based on click condition -->
 <h2>Heroes List</h2>
-<ul class="heroes" >
-    <li *ngFor="let hero of heroes" (click) = "onSelected(hero)">
+<ul class="heroes">
+
+    <!-- CSS not working at all -->
+    <li *ngFor="let hero of heroes" (click) = "onSelected(hero)" [class.selected]=" hero === selectedHero">
+        
         <span class="badge"> {{ hero.id }}</span>
         <span class="name">{{ hero.name }}</span> 
     </li>
+
+    
+    <li *ngFor="let hero of heroes">
+        <!-- css binding where hero is alias, selectedHero is the currently selected list item retrieved as a click event-->
+        <button [class.selected]="hero === selectedHero" type="button" (click)="onSelected(hero)">
+          <span class="badge">{{hero.id}}</span>
+          <span class="name">{{hero.name}}</span>
+        </button>
+      </li>
 </ul>
 
-<!-- using ngIf directive -->
-<div *ngIf="selectedHero">
-    <h2>{{selectedHero.name | uppercase}} Details</h2>
-    <div>id: {{selectedHero.id}}</div>
-    <div>
-      <label for="hero-name">Hero name: </label>
-      <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-    </div>
-</div>
+
+<!-- importing hero details component and passing in data-->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
